@@ -6,15 +6,20 @@ import com.example.studentsregistrar.repository.StudentRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.stereotype.Component;
 
 import java.io.FileReader;
 import java.io.IOException;
 
+@Component
+@ConditionalOnProperty("app.students.initialize.enabled")
 public class StudentsInitializer implements InitializingBean {
 
     private StudentRepository studentRepo;
 
-    @Value("${app.students.default-file-path}")
+    @Value("${app.students.initialize.default-file-path}")
     private String path;
 
     @Autowired

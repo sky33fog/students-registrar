@@ -1,6 +1,5 @@
-spring:
-  profiles:
-    active: "default"
 app:
   students:
-    default-file-path: "src/main/resources/default-students.txt"
+    initialize:
+      enabled: true
+      default-file-path: "src/main/resources/default-students.txt"

@@ -1,21 +1,19 @@
 package com.example.studentsregistrar;
 
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.UUID;
 
 @Getter
-@Setter
-public class Student {
+public final class Student {
 
-    private UUID id;
+    private final UUID id;
 
-    private String firstName;
+    private final String firstName;
 
-    private String lastName;
+    private final String lastName;
 
-    private int age;
+    private final int age;
 
     public Student(String firstName, String lastName, int age) {
         this.firstName = firstName;

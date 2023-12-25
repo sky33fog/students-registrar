@@ -1,5 +1,6 @@
-package com.example.studentsregistrar.event;
+package com.example.studentsregistrar.listener;
 
+import com.example.studentsregistrar.Student;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
@@ -7,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class StudentAddEventListener {
 
     @EventListener
-    public void listen(StudentAddEvent event) {
-        System.out.println(event.getStudent());
+    public void listen(Student student) {
+        System.out.println(student);
     }
 }

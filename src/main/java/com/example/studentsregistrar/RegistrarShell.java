@@ -1,7 +1,5 @@
 package com.example.studentsregistrar;
 
-import com.example.studentsregistrar.event.StudentAddEvent;
-import com.example.studentsregistrar.event.StudentRemoveEvent;
 import com.example.studentsregistrar.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +29,7 @@ public class RegistrarShell {
                     int age) {
         Student student = new Student(firstName, lastName, age);
         studentRepo.add(student);
-        publisher.publishEvent(new StudentAddEvent(this, student));
+        publisher.publishEvent(student);
     }
 
     @ShellMethod(key = "show")
@@ -42,7 +40,7 @@ public class RegistrarShell {
     @ShellMethod
     public void remove(UUID id) {
         if(studentRepo.removeItem(id)) {
-            publisher.publishEvent(new StudentRemoveEvent(this, id));
+            publisher.publishEvent(id);
         }
     }
 

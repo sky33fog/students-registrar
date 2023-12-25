@@ -6,21 +6,18 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 
 @Repository
-public class StudentRepository implements ProjectRepository<Student> {
+public class StudentRepository {
 
     private final Map<UUID,Student> studentsList = new HashMap<>();
 
-    @Override
     public void add(Student object) {
         studentsList.put(object.getId(), object);
     }
 
-    @Override
     public List<Student> getAll() {
         return new ArrayList<>(studentsList.values());
     }
 
-    @Override
     public boolean removeItem(UUID object) {
         if(studentsList.containsKey(object)) {
             studentsList.remove(object);
@@ -30,7 +27,6 @@ public class StudentRepository implements ProjectRepository<Student> {
         }
     }
 
-    @Override
     public void clearAll() {
         studentsList.clear();
     }
